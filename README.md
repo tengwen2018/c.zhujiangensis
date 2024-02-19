@@ -9,7 +9,7 @@ do
 fastp -i ${i}_1.fastq.gz -I ${i}_2.fastq.gz -o ${i}_clean_1.fq.gz -O ${i}_clean_2.fq.gz —adapter_sequence auto —detect_adapter_for_pe —unpaired1 output_um_1.fastq.gz —unpaired2 output_um_2.fastq.gz —failed_out output_failed.fastq.gz —cut_front —cut_front_window_size=1 —cut_front_mean_quality=20 —cut_tail —cut_tail_window_size=1 —cut_tail_mean_quality=20 —cut_right —cut_right_window_size=4 —cut_right_mean_quality=20 —length_required=36 —thread 1 --trim_front1 5 --trim_front2 5
 done
 ```
-**Map reads to *C. ariakensis* reference geneome (Wu et al., 2022)**
+**Mapping reads to *C. ariakensis* reference geneome (Wu et al., 2022)**
 ```bash
 bwa index ref.fa
 for i in `cat sample.list`
@@ -84,7 +84,7 @@ do
 fastp -i ${i}_1.fastq.gz -I ${i}_2.fastq.gz -o ${i}_clean_1.fq.gz -O ${i}_clean_2.fq.gz —adapter_sequence auto —detect_adapter_for_pe —unpaired1 output_um_1.fastq.gz —unpaired2 output_um_2.fastq.gz —failed_out output_failed.fastq.gz —cut_front —cut_front_window_size=1 —cut_front_mean_quality=20 —cut_tail —cut_tail_window_size=1 —cut_tail_mean_quality=20 —cut_right —cut_right_window_size=4 —cut_right_mean_quality=20 —length_required=36 —thread 1 --trim_front1 5 --trim_front2 5
 done
 ```
-**Map reads to *C. ariakensis* reference geneome (Wu et al., 2022) composed of ten primary super scaffolds.**
+**Mapping reads to *C. ariakensis* reference geneome (Wu et al., 2022) composed of ten primary super scaffolds.**
 ```bash
 bwa index ref.fa
 for i in `cat sample.list`
@@ -106,7 +106,7 @@ samtools index $i.bam && \
 rm -f $i.dup.bam
 done
 ````
-**Assemble the unmapped reads**
+**Assembling the unmapped reads**
 ```bash
 for i in `cat sample.list`
 do
@@ -117,7 +117,7 @@ spades.py -1 unmapped.R1.fastq -2 unmapped.R2.fastq -s unmapped.RS.fastq --caref
 cd ../
 done
 ```
-**Extract COI sequences**
+**Extracting *COI* sequences**
 ```bash
 for i in `cat sample.list`
 do
