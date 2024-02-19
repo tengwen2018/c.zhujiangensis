@@ -1,4 +1,4 @@
-# Identification of new *Crassostrea* species: *C. zhujiangensis*
+![image](https://github.com/tengwen2018/c.zhujiangensis/assets/115065520/a851da97-45e7-4b3a-b1f2-b3d2f68c7009)# Identification of new *Crassostrea* species: *C. zhujiangensis*
 This walkthrough comprehensively examines all code and outputs related to the bioinformatic analysis presented in the paper titled "Morphological differentiation, genomic divergence, and reproductive isolation identify the southern and northern populations of C. ariakensis as two distinct species."
 
 # 1. Genomic divergence
@@ -144,6 +144,30 @@ dnadist
 convertFasta2Phylip.sh merge.afa > merge.phy
 raxmlHPC-PTHREADS -f a -# 100 -m GTRGAMMA -p 12345 -x 12345 -s merge.phy -n output.tree -T 40 -o cangulata
 ```
+**Variability in shell characters**
+```r
+library(ggpubr)
+
+df <- read.table("morphology.txt", header=T)
+
+df$length2height <- df$length/df$height
+df$width2weight <- df$width/df$weight
+
+cmpr <- list(c("Northern_Cari","Southern_Cari"))
+
+pdf("length2height.pdf",height=3,width=3)
+# Create bar plots of means
+ggbarplot(df, x = "type", y = "length2height", 
+          add = c("mean_se", "jitter"),
+          fill = "type", color = "black", palette = c("#D4605F", "#D4605F"),
+          position = position_dodge(0.3)) +
+          stat_compare_means(comparisons = cmpr) + 
+          scale_y_continuous(expand = c(0,0), limits=c(0,1.3)) + 
+          labs(title = "", x = "", y = "Shell length to height ratio") + 
+          theme(legend.position = "none")
+dev.off()
+```
+
 # References
 EDGAR, R.C. 2004 MUSCLE: a multiple sequence alignment method with reduced time and space complexity. BMC Bioinformatics, 5: 1-19.
 
