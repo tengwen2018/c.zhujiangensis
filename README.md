@@ -1,4 +1,4 @@
-![image](https://github.com/tengwen2018/c.zhujiangensis/assets/115065520/a851da97-45e7-4b3a-b1f2-b3d2f68c7009)# Identification of new *Crassostrea* species: *C. zhujiangensis*
+# Identification of new *Crassostrea* species: *C. zhujiangensis*
 This walkthrough comprehensively examines all code and outputs related to the bioinformatic analysis presented in the paper titled "Morphological differentiation, genomic divergence, and reproductive isolation identify the southern and northern populations of C. ariakensis as two distinct species."
 
 # 1. Genomic divergence
